@@ -1,0 +1,181 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="learning-path-container">
+    <div class="header-section text-center mb-5">
+        <h1 class="display-4 text-primary fw-bold">Komplexe Zahlen</h1>
+        <p class="lead text-muted">Meistere die Welt der komplexen Zahlen Schritt für Schritt</p>
+    </div>
+    
+    <div class="learning-path">
+        <!-- Lesson 1: Grundlagen -->
+        <div class="path-node lesson-node active" data-lesson="1" data-type="lesson">
+            <div class="node-icon">
+                <i class="fas fa-star"></i>
+            </div>
+            <div class="node-content">
+                <h6 class="node-title">Grundlagen</h6>
+                <p class="node-description">Was sind komplexe Zahlen?</p>
+                <button class="btn btn-success btn-sm start-btn">
+                    <i class="fas fa-play me-1"></i>START
+                </button>
+            </div>
+            <div class="node-status">
+                <i class="fas fa-check-circle text-success d-none"></i>
+            </div>
+        </div>
+        
+        <div class="path-connector">
+            <div class="connector-line"></div>
+        </div>
+        
+        <!-- Theory 1: Darstellung -->
+        <div class="path-node theory-node locked" data-theory="1" data-type="theory">
+            <div class="node-icon">
+                <i class="fas fa-book"></i>
+            </div>
+            <div class="node-content">
+                <h6 class="node-title">Theorie: Darstellung</h6>
+                <p class="node-description">Algebraische und geometrische Form</p>
+                <button class="btn btn-outline-primary btn-sm start-btn" disabled>
+                    <i class="fas fa-lock me-1"></i>GESPERRT
+                </button>
+            </div>
+        </div>
+        
+        <div class="path-connector">
+            <div class="connector-line"></div>
+        </div>
+        
+        <!-- Lesson 2: Rechnen mit i -->
+        <div class="path-node lesson-node locked" data-lesson="2" data-type="lesson">
+            <div class="node-icon">
+                <i class="fas fa-calculator"></i>
+            </div>
+            <div class="node-content">
+                <h6 class="node-title">Rechnen mit i</h6>
+                <p class="node-description">Grundrechenarten mit komplexen Zahlen</p>
+                <button class="btn btn-outline-success btn-sm start-btn" disabled>
+                    <i class="fas fa-lock me-1"></i>GESPERRT
+                </button>
+            </div>
+        </div>
+        
+        <div class="path-connector">
+            <div class="connector-line"></div>
+        </div>
+        
+        <!-- Reward: Schatztruhe -->
+        <div class="path-node reward-node locked" data-reward="1" data-type="reward">
+            <div class="node-icon">
+                <i class="fas fa-gift"></i>
+            </div>
+            <div class="node-content">
+                <h6 class="node-title">Schatztruhe</h6>
+                <p class="node-description">Sammle deine Belohnung!</p>
+                <button class="btn btn-outline-warning btn-sm start-btn" disabled>
+                    <i class="fas fa-lock me-1"></i>GESPERRT
+                </button>
+            </div>
+        </div>
+        
+        <div class="path-connector">
+            <div class="connector-line"></div>
+        </div>
+        
+        <!-- Lesson 3: Komplexe Konjugation -->
+        <div class="path-node lesson-node locked" data-lesson="3" data-type="lesson">
+            <div class="node-icon">
+                <i class="fas fa-exchange-alt"></i>
+            </div>
+            <div class="node-content">
+                <h6 class="node-title">Konjugation</h6>
+                <p class="node-description">Komplexe Konjugation verstehen</p>
+                <button class="btn btn-outline-success btn-sm start-btn" disabled>
+                    <i class="fas fa-lock me-1"></i>GESPERRT
+                </button>
+            </div>
+        </div>
+        
+        <div class="path-connector">
+            <div class="connector-line"></div>
+        </div>
+        
+        <!-- Theory 2: Polarform -->
+        <div class="path-node theory-node locked" data-theory="2" data-type="theory">
+            <div class="node-icon">
+                <i class="fas fa-compass"></i>
+            </div>
+            <div class="node-content">
+                <h6 class="node-title">Theorie: Polarform</h6>
+                <p class="node-description">Betrag und Argument</p>
+                <button class="btn btn-outline-primary btn-sm start-btn" disabled>
+                    <i class="fas fa-lock me-1"></i>GESPERRT
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Initial Test Modal -->
+<div class="modal fade" id="initialTestModal" tabindex="-1" aria-labelledby="initialTestModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="initialTestModalLabel">
+                    <i class="fas fa-clipboard-list me-2"></i>
+                    Einstufungstest
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-info">
+                    <i class="fas fa-info-circle me-2"></i>
+                    Beantworte diese Fragen, um deinen optimalen Startpunkt zu finden.
+                </div>
+                <div id="test-questions">
+                    <!-- Questions will be loaded dynamically -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Überspringen</button>
+                <button type="button" class="btn btn-primary" id="submitTest">Test abschließen</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Welcome Modal -->
+<div class="modal fade" id="welcomeModal" tabindex="-1" aria-labelledby="welcomeModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="welcomeModalLabel">
+                    <i class="fas fa-rocket me-2"></i>
+                    Willkommen bei Andromeda!
+                </h5>
+            </div>
+            <div class="modal-body text-center">
+                <div class="mb-3">
+                    <i class="fas fa-graduation-cap text-primary" style="font-size: 4rem;"></i>
+                </div>
+                <h4>Bereit für komplexe Zahlen?</h4>
+                <p class="text-muted">Lerne interaktiv mit KI-Unterstützung und sammle XP!</p>
+            </div>
+            <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                    Direkt starten
+                </button>
+                <button type="button" class="btn btn-primary" id="startPlacementTest">
+                    <i class="fas fa-clipboard-list me-1"></i>
+                    Einstufungstest machen
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+{% endblock %}

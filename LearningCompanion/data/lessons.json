@@ -1,0 +1,274 @@
+{
+  "1": {
+    "title": "Grundlagen komplexer Zahlen",
+    "description": "Einführung in die Welt der komplexen Zahlen",
+    "difficulty": "beginner",
+    "estimated_time": 15,
+    "questions": [
+      {
+        "title": "Was ist eine komplexe Zahl?",
+        "question": "Eine komplexe Zahl besteht aus zwei Teilen. Wie nennt man diese?",
+        "type": "multiple_choice",
+        "options": [
+          "Realteil und Imaginärteil",
+          "Positiver und negativer Teil", 
+          "Ganzer und gebrochener Teil",
+          "Natürlicher und künstlicher Teil"
+        ],
+        "correct_answer": "Realteil und Imaginärteil",
+        "feedback_correct": "Richtig! Eine komplexe Zahl z = a + bi hat einen Realteil a und einen Imaginärteil b.",
+        "feedback_incorrect": "Eine komplexe Zahl z = a + bi besteht aus dem Realteil a und dem Imaginärteil b.",
+        "hints": [
+          "Denke an die allgemeine Form z = a + bi",
+          "Der erste Teil ist real, der zweite enthält die imaginäre Einheit i",
+          "Real- und Imaginärteil sind die beiden Komponenten"
+        ]
+      },
+      {
+        "title": "Die imaginäre Einheit",
+        "question": "Was ist das Ergebnis von i² (i hoch 2)?",
+        "type": "multiple_choice",
+        "options": [
+          "-1",
+          "1",
+          "i",
+          "0"
+        ],
+        "correct_answer": "-1",
+        "feedback_correct": "Perfekt! Per Definition ist i² = -1. Das ist die grundlegende Eigenschaft der imaginären Einheit.",
+        "feedback_incorrect": "Die imaginäre Einheit i ist definiert als die Zahl, für die i² = -1 gilt.",
+        "explanation": "Die imaginäre Einheit i ist definiert durch die Eigenschaft i² = -1. Sie ermöglicht es uns, die Quadraturzel aus negativen Zahlen zu ziehen.",
+        "hints": [
+          "i ist definiert als die Quadratwurzel aus -1",
+          "Was ergibt (√(-1))²?",
+          "Die Definition lautet: i² = -1"
+        ]
+      },
+      {
+        "title": "Komplexe Zahl identifizieren",
+        "question": "Welche der folgenden Zahlen ist eine komplexe Zahl?",
+        "type": "multiple_choice",
+        "options": [
+          "3 + 4i",
+          "5",
+          "2i",
+          "Alle oben genannten"
+        ],
+        "correct_answer": "Alle oben genannten",
+        "feedback_correct": "Ausgezeichnet! Alle sind komplexe Zahlen: 3+4i ist eine allgemeine komplexe Zahl, 5 ist eine reelle Zahl (mit Imaginärteil 0), und 2i ist eine rein imaginäre Zahl.",
+        "feedback_incorrect": "Alle genannten Zahlen sind komplexe Zahlen. Reelle Zahlen und rein imaginäre Zahlen sind Spezialfälle komplexer Zahlen.",
+        "hints": [
+          "Reelle Zahlen sind auch komplexe Zahlen (mit Imaginärteil 0)",
+          "Rein imaginäre Zahlen sind auch komplex (mit Realteil 0)",
+          "Die Menge der komplexen Zahlen umfasst alle diese Fälle"
+        ]
+      },
+      {
+        "title": "Realteil bestimmen",
+        "question": "Was ist der Realteil der komplexen Zahl z = 7 - 3i?",
+        "type": "text_input",
+        "correct_answer": "7",
+        "feedback_correct": "Richtig! In der Form z = a + bi ist a der Realteil. Hier ist a = 7.",
+        "feedback_incorrect": "Der Realteil ist die Zahl vor dem i-Term. Bei z = 7 - 3i ist das die 7.",
+        "placeholder": "Gib nur die Zahl ein",
+        "hints": [
+          "In der Form a + bi ist a der Realteil",
+          "Welche Zahl steht vor dem i?",
+          "Der Realteil ist 7"
+        ]
+      },
+      {
+        "title": "Imaginärteil bestimmen",
+        "question": "Was ist der Imaginärteil der komplexen Zahl z = 2 + 5i?",
+        "type": "text_input",
+        "correct_answer": "5",
+        "feedback_correct": "Korrekt! Der Imaginärteil ist der Koeffizient von i, also 5.",
+        "feedback_incorrect": "Der Imaginärteil ist der Koeffizient der imaginären Einheit i. Bei 2 + 5i ist das die 5.",
+        "explanation": "Wichtig: Der Imaginärteil ist nur der Koeffizient von i, nicht 5i, sondern nur 5.",
+        "placeholder": "Gib nur die Zahl ein",
+        "hints": [
+          "In der Form a + bi ist b der Imaginärteil",
+          "Welche Zahl steht vor dem i?",
+          "Der Imaginärteil ist die Zahl 5, nicht 5i"
+        ]
+      }
+    ],
+    "learning_objectives": [
+      "Definition komplexer Zahlen verstehen",
+      "Realteil und Imaginärteil identifizieren", 
+      "Die imaginäre Einheit i kennenlernen"
+    ]
+  },
+  "2": {
+    "title": "Rechnen mit komplexen Zahlen",
+    "description": "Grundrechenarten mit komplexen Zahlen",
+    "difficulty": "beginner",  
+    "estimated_time": 20,
+    "questions": [
+      {
+        "title": "Addition komplexer Zahlen",
+        "question": "Berechne: (3 + 2i) + (1 + 4i)",
+        "type": "complex_input",
+        "correct_answer": "4+6i",
+        "feedback_correct": "Perfekt! Bei der Addition werden Real- und Imaginärteile getrennt addiert: (3+1) + (2+4)i = 4 + 6i",
+        "feedback_incorrect": "Bei der Addition komplexer Zahlen addierst du Real- und Imaginärteile getrennt.",
+        "explanation": "Addition komplexer Zahlen: (a + bi) + (c + di) = (a + c) + (b + d)i",
+        "hints": [
+          "Addiere die Realteile: 3 + 1 = ?",
+          "Addiere die Imaginärteile: 2 + 4 = ?",
+          "Das Ergebnis ist 4 + 6i"
+        ]
+      },
+      {
+        "title": "Subtraktion komplexer Zahlen", 
+        "question": "Berechne: (5 + 3i) - (2 + i)",
+        "type": "complex_input",
+        "correct_answer": "3+2i",
+        "feedback_correct": "Richtig! (5-2) + (3-1)i = 3 + 2i",
+        "feedback_incorrect": "Subtrahiere Real- und Imaginärteile getrennt voneinander.",
+        "hints": [
+          "Subtrahiere die Realteile: 5 - 2 = ?",
+          "Subtrahiere die Imaginärteile: 3 - 1 = ?",
+          "Das Ergebnis ist 3 + 2i"
+        ]
+      },
+      {
+        "title": "Multiplikation mit reeller Zahl",
+        "question": "Berechne: 3 · (2 + 4i)",
+        "type": "complex_input", 
+        "correct_answer": "6+12i",
+        "feedback_correct": "Ausgezeichnet! Multipliziere jeden Teil: 3 · 2 + 3 · 4i = 6 + 12i",
+        "feedback_incorrect": "Multipliziere die reelle Zahl mit beiden Teilen der komplexen Zahl.",
+        "hints": [
+          "Multipliziere 3 mit dem Realteil: 3 · 2 = ?",
+          "Multipliziere 3 mit dem Imaginärteil: 3 · 4i = ?",
+          "Das Ergebnis ist 6 + 12i"
+        ]
+      },
+      {
+        "title": "Multiplikation komplexer Zahlen",
+        "question": "Berechne: (1 + i) · (1 - i)",
+        "type": "complex_input",
+        "correct_answer": "2",
+        "feedback_correct": "Hervorragend! (1+i)(1-i) = 1 - i² = 1 - (-1) = 2. Das ist ein Beispiel für konjugierte komplexe Zahlen.",
+        "feedback_incorrect": "Verwende die Formel (a+bi)(c+di) = (ac-bd) + (ad+bc)i oder multipliziere aus wie bei Binomen.",
+        "explanation": "Dies ist ein besonderer Fall: (a+bi)(a-bi) = a² + b². Hier: 1² + 1² = 2",
+        "hints": [
+          "Multipliziere aus: (1+i)(1-i) = 1·1 + 1·(-i) + i·1 + i·(-i)",
+          "Vereinfache: 1 - i + i - i²",
+          "Da i² = -1, wird das zu 1 - (-1) = 2"
+        ]
+      },
+      {
+        "title": "Potenzen von i",
+        "question": "Was ist i³?",
+        "type": "multiple_choice",
+        "options": [
+          "-i",
+          "i", 
+          "-1",
+          "1"
+        ],
+        "correct_answer": "-i",
+        "feedback_correct": "Richtig! i³ = i² · i = (-1) · i = -i",
+        "feedback_incorrect": "Berechne i³ = i² · i. Da i² = -1, folgt i³ = -1 · i = -i",
+        "explanation": "Die Potenzen von i folgen einem Zyklus: i¹ = i, i² = -1, i³ = -i, i⁴ = 1, dann wiederholt sich das Muster.",
+        "hints": [
+          "i³ = i² · i",
+          "Du weißt, dass i² = -1",
+          "Also ist i³ = (-1) · i = -i"
+        ]
+      }
+    ],
+    "learning_objectives": [
+      "Addition und Subtraktion komplexer Zahlen",
+      "Multiplikation mit reellen Zahlen",
+      "Grundlagen der Multiplikation komplexer Zahlen",
+      "Potenzen der imaginären Einheit"
+    ]
+  },
+  "3": {
+    "title": "Komplexe Konjugation und Betrag",
+    "description": "Konjugation und Betrag komplexer Zahlen",
+    "difficulty": "intermediate",
+    "estimated_time": 25,
+    "questions": [
+      {
+        "title": "Konjugierte komplexe Zahl",
+        "question": "Was ist die konjugierte komplexe Zahl zu z = 3 + 4i?",
+        "type": "complex_input",
+        "correct_answer": "3-4i",
+        "feedback_correct": "Korrekt! Die konjugierte Zahl zu a + bi ist a - bi. Das Vorzeichen des Imaginärteils wird umgekehrt.",
+        "feedback_incorrect": "Die konjugierte Zahl erhältst du, indem du das Vorzeichen des Imaginärteils umkehrst.",
+        "explanation": "Die komplexe Konjugation ändert nur das Vorzeichen des Imaginärteils: z̄ = a - bi wenn z = a + bi",
+        "hints": [
+          "Der Realteil bleibt gleich",
+          "Das Vorzeichen des Imaginärteils wird umgekehrt",
+          "Aus +4i wird -4i"
+        ]
+      },
+      {
+        "title": "Eigenschaften der Konjugation", 
+        "question": "Was ist z · z̄ für z = 2 + 3i? (z̄ ist die konjugierte Zahl zu z)",
+        "type": "text_input",
+        "correct_answer": "13",
+        "feedback_correct": "Perfekt! z · z̄ = (2+3i)(2-3i) = 4 - 9i² = 4 + 9 = 13",
+        "feedback_incorrect": "Multipliziere z mit seiner konjugierten Zahl: (2+3i)(2-3i)",
+        "explanation": "Das Produkt einer komplexen Zahl mit ihrer Konjugierten ist immer reell: z · z̄ = |z|²",
+        "hints": [
+          "z̄ = 2 - 3i",
+          "Berechne (2+3i)(2-3i)",
+          "Das ergibt 4 - 9i² = 4 + 9 = 13"
+        ]
+      },
+      {
+        "title": "Betrag einer komplexen Zahl",
+        "question": "Was ist der Betrag |z| der komplexen Zahl z = 3 + 4i?",
+        "type": "text_input", 
+        "correct_answer": "5",
+        "feedback_correct": "Richtig! |z| = √(3² + 4²) = √(9 + 16) = √25 = 5",
+        "feedback_incorrect": "Der Betrag wird berechnet als |a + bi| = √(a² + b²)",
+        "explanation": "Der Betrag entspricht der Länge des Vektors in der komplexen Zahlenebene.",
+        "hints": [
+          "Verwende die Formel |a + bi| = √(a² + b²)",
+          "Berechne √(3² + 4²)",
+          "Das ist √(9 + 16) = √25 = 5"
+        ]
+      },
+      {
+        "title": "Division komplexer Zahlen",
+        "question": "Berechne: (2 + i) / (1 + i)",
+        "type": "complex_input",
+        "correct_answer": "1.5-0.5i",
+        "feedback_correct": "Ausgezeichnet! Erweitere mit der konjugierten Zahl des Nenners: (2+i)(1-i) / (1+i)(1-i) = (3-i) / 2 = 1.5 - 0.5i",
+        "feedback_incorrect": "Erweitere Zähler und Nenner mit der konjugierten Zahl des Nenners.",
+        "explanation": "Division durch Erweitern mit der konjugierten Zahl macht den Nenner reell.",
+        "hints": [
+          "Erweitere mit (1-i): (2+i)(1-i) / (1+i)(1-i)",
+          "Zähler: (2+i)(1-i) = 2 - 2i + i - i² = 3 - i",
+          "Nenner: (1+i)(1-i) = 1 - i² = 2, also (3-i)/2 = 1.5 - 0.5i"
+        ]
+      },
+      {
+        "title": "Anwendung: Elektrische Impedanz",
+        "question": "Ein elektrischer Widerstand hat die Impedanz Z = 6 + 8i Ohm. Wie groß ist sein Betrag |Z|?",
+        "type": "text_input",
+        "correct_answer": "10",
+        "feedback_correct": "Korrekt! |Z| = √(6² + 8²) = √(36 + 64) = √100 = 10 Ohm. Das ist die Gesamtimpedanz.",
+        "feedback_incorrect": "Berechne den Betrag wie bei jeder komplexen Zahl: √(Realteil² + Imaginärteil²)",
+        "explanation": "In der Elektrotechnik repräsentiert der Betrag der Impedanz den Gesamtwiderstand.",
+        "hints": [
+          "Verwende |a + bi| = √(a² + b²)", 
+          "Hier ist a = 6 und b = 8",
+          "√(36 + 64) = √100 = 10"
+        ]
+      }
+    ],
+    "learning_objectives": [
+      "Komplexe Konjugation verstehen und anwenden",
+      "Betrag komplexer Zahlen berechnen",
+      "Division komplexer Zahlen",
+      "Praktische Anwendungen kennenlernen"
+    ]
+  }
+}

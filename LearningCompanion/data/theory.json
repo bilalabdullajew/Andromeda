@@ -1,0 +1,66 @@
+{
+  "1": {
+    "title": "Darstellung komplexer Zahlen",
+    "sections": [
+      {
+        "title": "Algebraische Form",
+        "content": "Eine komplexe Zahl z kann in der <strong>algebraischen Form</strong> dargestellt werden:<br><br><div class='formula'>z = a + bi</div><br>wobei:<ul><li><strong>a</strong> der Realteil (Re(z)) ist</li><li><strong>b</strong> der Imaginärteil (Im(z)) ist</li><li><strong>i</strong> die imaginäre Einheit mit i² = -1</li></ul>",
+        "visual": "<div class='theory-visual'><h6>Beispiele:</h6><ul><li>z₁ = 3 + 4i → Re(z₁) = 3, Im(z₁) = 4</li><li>z₂ = -2 + 5i → Re(z₂) = -2, Im(z₂) = 5</li><li>z₃ = 7 → Re(z₃) = 7, Im(z₃) = 0 (reelle Zahl)</li><li>z₄ = 3i → Re(z₄) = 0, Im(z₄) = 3 (rein imaginär)</li></ul></div>"
+      },
+      {
+        "title": "Geometrische Interpretation",
+        "content": "Komplexe Zahlen können als Punkte in der <strong>Gaußschen Zahlenebene</strong> dargestellt werden:<br><br><ul><li>Die <strong>x-Achse</strong> (Realachse) repräsentiert den Realteil</li><li>Die <strong>y-Achse</strong> (Imaginärachse) repräsentiert den Imaginärteil</li><li>Jede komplexe Zahl entspricht einem Punkt (a, b)</li></ul>",
+        "visual": "<div class='theory-visual'><div class='coordinate-system'><h6>Gaußsche Zahlenebene</h6><p>📊 Koordinatensystem:</p><ul><li>Punkt (3, 4) entspricht z = 3 + 4i</li><li>Punkt (-2, 1) entspricht z = -2 + i</li><li>Realachse: alle Punkte der Form (a, 0)</li><li>Imaginärachse: alle Punkte der Form (0, b)</li></ul></div></div>"
+      },
+      {
+        "title": "Besondere komplexe Zahlen",
+        "content": "Es gibt verschiedene Typen komplexer Zahlen:<br><br><ul><li><strong>Reelle Zahlen:</strong> Im(z) = 0, z.B. z = 5</li><li><strong>Rein imaginäre Zahlen:</strong> Re(z) = 0, z.B. z = 3i</li><li><strong>Konjugierte Zahlen:</strong> z̄ = a - bi wenn z = a + bi</li></ul>",
+        "visual": "<div class='theory-visual'><h6>Spezielle Eigenschaften:</h6><ul><li>0 = 0 + 0i (komplexe Null)</li><li>1 = 1 + 0i (komplexe Eins)</li><li>i = 0 + 1i (imaginäre Einheit)</li><li>Konjugierte sind symmetrisch zur Realachse</li></ul></div>"
+      }
+    ],
+    "key_concepts": [
+      "Algebraische Form z = a + bi",
+      "Realteil und Imaginärteil",
+      "Gaußsche Zahlenebene",
+      "Geometrische Interpretation"
+    ],
+    "applications": [
+      "Elektrotechnik: Wechselstromrechnung",
+      "Physik: Quantenmechanik",
+      "Signalverarbeitung: Fourier-Transformation",
+      "Computergrafik: Rotationen und Transformationen"
+    ]
+  },
+  "2": {
+    "title": "Polarform komplexer Zahlen",
+    "sections": [
+      {
+        "title": "Betrag und Argument",
+        "content": "Jede komplexe Zahl z = a + bi kann durch <strong>Betrag</strong> und <strong>Argument</strong> beschrieben werden:<br><br><ul><li><strong>Betrag:</strong> |z| = √(a² + b²)</li><li><strong>Argument:</strong> φ = arctan(b/a)</li></ul><br>Der Betrag ist die Entfernung vom Ursprung, das Argument der Winkel zur positiven Realachse.",
+        "visual": "<div class='theory-visual'><h6>Beispiel: z = 3 + 4i</h6><ul><li>|z| = √(3² + 4²) = √25 = 5</li><li>φ = arctan(4/3) ≈ 53.13°</li><li>Darstellung als Vektor mit Länge 5 und Winkel 53.13°</li></ul></div>"
+      },
+      {
+        "title": "Polarform",
+        "content": "Die <strong>Polarform</strong> einer komplexen Zahl lautet:<br><br><div class='formula'>z = r · (cos φ + i sin φ) = r · e^(iφ)</div><br>wobei:<ul><li><strong>r = |z|</strong> der Betrag</li><li><strong>φ</strong> das Argument (Winkel)</li><li><strong>e^(iφ) = cos φ + i sin φ</strong> (Eulersche Formel)</li></ul>",
+        "visual": "<div class='theory-visual'><h6>Umrechnung zwischen den Formen:</h6><ul><li>Kartesisch → Polar: r = √(a² + b²), φ = arctan(b/a)</li><li>Polar → Kartesisch: a = r cos φ, b = r sin φ</li></ul></div>"
+      },
+      {
+        "title": "Eulersche Formel",
+        "content": "Die berühmte <strong>Eulersche Formel</strong> verbindet Exponentialfunktion und Trigonometrie:<br><br><div class='formula'>e^(iφ) = cos φ + i sin φ</div><br>Besondere Fälle:<ul><li>e^(iπ) = -1 (Eulersche Identität)</li><li>e^(i·π/2) = i</li><li>e^(i·0) = 1</li></ul>",
+        "visual": "<div class='theory-visual'><h6>Visualisierung:</h6><p>Die Exponentialfunktion e^(iφ) beschreibt eine Rotation um den Winkel φ auf dem Einheitskreis.</p><ul><li>φ = 0°: Punkt (1, 0)</li><li>φ = 90°: Punkt (0, 1)</li><li>φ = 180°: Punkt (-1, 0)</li><li>φ = 270°: Punkt (0, -1)</li></ul></div>"
+      }
+    ],
+    "key_concepts": [
+      "Betrag |z| = √(a² + b²)",
+      "Argument φ = arctan(b/a)",
+      "Polarform z = r·e^(iφ)",
+      "Eulersche Formel e^(iφ) = cos φ + i sin φ"
+    ],
+    "advantages": [
+      "Multiplikation: |z₁·z₂| = |z₁|·|z₂|, arg(z₁·z₂) = arg(z₁) + arg(z₂)",
+      "Potenzierung: z^n = r^n · e^(inφ)",
+      "Wurzelziehen: ⁿ√z hat n verschiedene Werte",
+      "Geometrische Operationen werden einfacher"
+    ]
+  }
+}

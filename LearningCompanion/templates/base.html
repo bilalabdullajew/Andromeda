@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Andromeda - Lernplattform{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/andromeda.css') }}" rel="stylesheet">
+</head>
+<body>
+    <div class="container-fluid h-100">
+        <div class="row h-100">
+            <!-- Navigation Sidebar -->
+            <div class="col-1 sidebar d-flex flex-column align-items-center py-3">
+                <div class="nav-icon active mb-4" data-section="learn">
+                    <i class="fas fa-graduation-cap fs-4"></i>
+                    <small class="d-block mt-1">Lernen</small>
+                </div>
+                <div class="nav-icon mb-4" data-section="practice">
+                    <i class="fas fa-dumbbell fs-4"></i>
+                    <small class="d-block mt-1">Üben</small>
+                </div>
+                <div class="nav-icon mb-4" data-section="profile">
+                    <i class="fas fa-user fs-4"></i>
+                    <small class="d-block mt-1">Profil</small>
+                </div>
+            </div>
+            
+            <!-- Main Content -->
+            <div class="col-8 main-content p-4">
+                {% block content %}{% endblock %}
+            </div>
+            
+            <!-- Gamification Sidebar -->
+            <div class="col-3 gamification-sidebar p-4">
+                <div class="widget xp-widget mb-4">
+                    <h5 class="widget-title">
+                        <i class="fas fa-target text-primary"></i>
+                        Tagesziel
+                    </h5>
+                    <div class="progress-container">
+                        <div class="progress mb-2">
+                            <div class="progress-bar progress-bar-striped progress-bar-animated" 
+                                 id="xp-progress" 
+                                 role="progressbar" 
+                                 style="width: 0%" 
+                                 aria-valuenow="0" 
+                                 aria-valuemin="0" 
+                                 aria-valuemax="20">
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <span id="xp-text" class="text-muted">0/20 XP</span>
+                            <span class="text-success" id="streak-text">🔥 0</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="widget lives-widget mb-4">
+                    <h5 class="widget-title">
+                        <i class="fas fa-heart text-danger"></i>
+                        Leben
+                    </h5>
+                    <div class="lives-container d-flex justify-content-center gap-2">
+                        <i class="fas fa-heart life-heart active" data-life="1"></i>
+                        <i class="fas fa-heart life-heart active" data-life="2"></i>
+                        <i class="fas fa-heart life-heart active" data-life="3"></i>
+                    </div>
+                    <div class="text-center mt-2">
+                        <small class="text-muted">Regeneriert in 5 Std.</small>
+                    </div>
+                </div>
+
+                <div class="widget achievements-widget">
+                    <h5 class="widget-title">
+                        <i class="fas fa-trophy text-warning"></i>
+                        Erfolge
+                    </h5>
+                    <div class="achievements-grid">
+                        <div class="achievement locked" data-achievement="first-lesson">
+                            <i class="fas fa-star"></i>
+                            <small>Erste Lektion</small>
+                        </div>
+                        <div class="achievement locked" data-achievement="streak-3">
+                            <i class="fas fa-fire"></i>
+                            <small>3 Tage Serie</small>
+                        </div>
+                        <div class="achievement locked" data-achievement="perfectionist">
+                            <i class="fas fa-gem"></i>
+                            <small>Perfektionist</small>
+                        </div>
+                        <div class="achievement locked" data-achievement="fast-learner">
+                            <i class="fas fa-bolt"></i>
+                            <small>Schnelllerner</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay d-none" id="loadingOverlay">
+        <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Wird geladen...</span>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='js/gamification.js') }}"></script>
+    {% block scripts %}{% endblock %}
+</body>
+</html>

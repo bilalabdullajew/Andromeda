@@ -1,0 +1,163 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="lesson-container">
+    <div class="lesson-header mb-4">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <a href="{{ url_for('index') }}" class="btn btn-outline-secondary">
+                <i class="fas fa-arrow-left me-1"></i>Zurück
+            </a>
+            <h3 class="mb-0">{{ lesson.title }}</h3>
+            <div class="lesson-meta">
+                <span class="badge bg-primary">Lektion {{ lesson_id }}</span>
+            </div>
+        </div>
+        
+        <div class="progress mb-2">
+            <div class="progress-bar progress-bar-striped progress-bar-animated" 
+                 id="lesson-progress" 
+                 role="progressbar" 
+                 style="width: 0%" 
+                 aria-valuenow="0" 
+                 aria-valuemin="0" 
+                 aria-valuemax="100">
+            </div>
+        </div>
+        <div class="d-flex justify-content-between">
+            <small class="text-muted">
+                Frage <span id="current-question">1</span> von <span id="total-questions">{{ lesson.questions|length }}</span>
+            </small>
+            <small class="text-muted" id="question-type">Multiple Choice</small>
+        </div>
+    </div>
+    
+    <div class="question-container" id="question-container">
+        <div class="question-card">
+            <div class="card">
+                <div class="card-body">
+                    <div class="question-content">
+                        <h5 class="question-title" id="question-title">Lade Frage...</h5>
+                        <p class="question-text" id="question-text"></p>
+                        <div class="question-visual" id="question-visual"></div>
+                    </div>
+                    
+                    <div class="answer-section" id="answer-section">
+                        <!-- Dynamically populated based on question type -->
+                    </div>
+                    
+                    <div class="feedback-section d-none" id="feedback-section">
+                        <div class="alert" id="feedback-alert">
+                            <div class="feedback-content" id="feedback-content"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="lesson-controls mt-4">
+        <div class="d-flex justify-content-between align-items-center">
+            <div class="hint-controls">
+                <button class="btn btn-outline-warning" id="hint-btn">
+                    <i class="fas fa-lightbulb me-1"></i>
+                    Hinweis <span class="badge bg-warning text-dark" id="hint-count">3</span>
+                </button>
+                <button class="btn btn-outline-info" id="tutor-btn">
+                    <i class="fas fa-robot me-1"></i>
+                    KI-Tutor fragen
+                </button>
+            </div>
+            
+            <div class="answer-controls">
+                <button class="btn btn-outline-secondary" id="skip-btn">
+                    Überspringen
+                </button>
+                <button class="btn btn-primary" id="check-btn" disabled>
+                    <i class="fas fa-check me-1"></i>
+                    Prüfen
+                </button>
+                <button class="btn btn-success d-none" id="continue-btn">
+                    <i class="fas fa-arrow-right me-1"></i>
+                    Weiter
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- KI Tutor Chat Modal -->
+<div class="modal fade" id="tutorModal" tabindex="-1" aria-labelledby="tutorModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="tutorModalLabel">
+                    <i class="fas fa-robot text-info me-2"></i>
+                    KI-Tutor
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="chat-container" id="chat-container">
+                    <div class="chat-message tutor-message">
+                        <div class="message-avatar">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div class="message-content">
+                            <strong>Tutor:</strong> Hallo! Ich helfe dir gerne bei dieser Aufgabe. Was bereitet dir Schwierigkeiten?
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="chat-input-container flex-grow-1 me-3">
+                    <input type="text" class="form-control" id="chat-input" placeholder="Stelle deine Frage..." maxlength="500">
+                </div>
+                <button class="btn btn-primary" id="send-chat">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Lesson Complete Modal -->
+<div class="modal fade" id="lessonCompleteModal" tabindex="-1" aria-labelledby="lessonCompleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="lessonCompleteModalLabel">
+                    <i class="fas fa-trophy text-warning me-2"></i>
+                    Lektion abgeschlossen!
+                </h5>
+            </div>
+            <div class="modal-body text-center">
+                <div class="completion-stats">
+                    <div class="stat-item">
+                        <i class="fas fa-star text-warning"></i>
+                        <span class="stat-value" id="earned-xp">+25 XP</span>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-bullseye text-success"></i>
+                        <span class="stat-value" id="accuracy">85% Genauigkeit</span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer justify-content-center">
+                <a href="{{ url_for('index') }}" class="btn btn-primary">
+                    <i class="fas fa-home me-1"></i>
+                    Zur Übersicht
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    const lessonData = {{ lesson | tojson }};
+    const lessonId = {{ lesson_id }};
+</script>
+<script src="{{ url_for('static', filename='js/ai_tutor.js') }}"></script>
+<script src="{{ url_for('static', filename='js/lesson.js') }}"></script>
+{% endblock %}

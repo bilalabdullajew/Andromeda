@@ -1,0 +1,100 @@
+{
+  "title": "Einstufungstest: Komplexe Zahlen",
+  "description": "Dieser Test hilft dabei, deinen Kenntnisstand zu ermitteln und den optimalen Startpunkt zu finden.",
+  "duration": 10,
+  "questions": [
+    {
+      "title": "Grundkenntnisse",
+      "question": "Was ist das Ergebnis von i² (i zum Quadrat)?",
+      "type": "multiple_choice",
+      "options": [
+        "-1",
+        "1", 
+        "i",
+        "Ich weiß es nicht"
+      ],
+      "correct_answer": "-1",
+      "difficulty": "basic",
+      "explanation": "Die imaginäre Einheit i ist definiert durch i² = -1."
+    },
+    {
+      "title": "Algebraische Form",
+      "question": "Welche Aussage über die komplexe Zahl z = 3 + 4i ist richtig?",
+      "type": "multiple_choice", 
+      "options": [
+        "Der Realteil ist 4 und der Imaginärteil ist 3",
+        "Der Realteil ist 3 und der Imaginärteil ist 4",
+        "Der Realteil ist 3 und der Imaginärteil ist 4i",
+        "Ich bin mir nicht sicher"
+      ],
+      "correct_answer": "Der Realteil ist 3 und der Imaginärteil ist 4",
+      "difficulty": "basic",
+      "explanation": "Bei z = a + bi ist a der Realteil und b der Imaginärteil."
+    },
+    {
+      "title": "Addition",
+      "question": "Was ist das Ergebnis von (2 + 3i) + (1 + i)?",
+      "type": "multiple_choice",
+      "options": [
+        "3 + 4i",
+        "3 + 2i", 
+        "2 + 4i",
+        "Das kann ich nicht berechnen"
+      ],
+      "correct_answer": "3 + 4i",
+      "difficulty": "intermediate",
+      "explanation": "Bei der Addition werden Real- und Imaginärteile getrennt addiert: (2+1) + (3+1)i = 3 + 4i"
+    },
+    {
+      "title": "Multiplikation",
+      "question": "Was ist das Ergebnis von (1 + i) · (1 - i)?",
+      "type": "multiple_choice",
+      "options": [
+        "0",
+        "1",
+        "2", 
+        "Das ist zu schwierig für mich"
+      ],
+      "correct_answer": "2",
+      "difficulty": "intermediate",
+      "explanation": "Ausmultiplizieren ergibt: 1 - i + i - i² = 1 - (-1) = 2"
+    },
+    {
+      "title": "Betrag",
+      "question": "Was ist der Betrag |z| der komplexen Zahl z = 3 + 4i?",
+      "type": "multiple_choice",
+      "options": [
+        "7",
+        "5",
+        "√7",
+        "Das habe ich noch nie gemacht"
+      ],
+      "correct_answer": "5",
+      "difficulty": "advanced",
+      "explanation": "Der Betrag wird berechnet als |z| = √(3² + 4²) = √(9 + 16) = √25 = 5"
+    }
+  ],
+  "scoring": {
+    "0-1": {
+      "level": "Anfänger",
+      "recommendation": "Beginne mit den Grundlagen komplexer Zahlen. Du lernst zuerst die Definition und einfache Eigenschaften.",
+      "start_lesson": 1
+    },
+    "2-3": {
+      "level": "Grundkenntnisse",
+      "recommendation": "Du kennst die Basics! Starte mit den Rechenoperationen und vertiefe dein Verständnis.",
+      "start_lesson": 2
+    },
+    "4-5": {
+      "level": "Fortgeschritten",
+      "recommendation": "Sehr gut! Du hast solide Grundkenntnisse. Du kannst mit fortgeschrittenen Themen beginnen.",
+      "start_lesson": 3
+    }
+  },
+  "feedback_messages": {
+    "excellent": "Ausgezeichnet! Du hast ein sehr gutes Verständnis komplexer Zahlen.",
+    "good": "Gut gemacht! Du hast solide Grundkenntnisse, die wir weiter ausbauen können.",
+    "basic": "Das sind gute Grundlagen! Wir beginnen mit den fundamentalen Konzepten.",
+    "beginner": "Kein Problem! Jeder fängt einmal an. Wir starten von Grund auf."
+  }
+}

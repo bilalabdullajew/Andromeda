@@ -1,0 +1,186 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="initial-test-container">
+    <div class="test-header text-center mb-5">
+        <h2 class="text-primary">
+            <i class="fas fa-clipboard-list me-2"></i>
+            Einstufungstest
+        </h2>
+        <p class="lead text-muted">Finde deinen optimalen Startpunkt</p>
+        <div class="progress mb-3">
+            <div class="progress-bar" id="test-progress" style="width: 0%"></div>
+        </div>
+        <small class="text-muted">
+            Frage <span id="current-test-question">1</span> von <span id="total-test-questions">5</span>
+        </small>
+    </div>
+    
+    <div class="test-question-container" id="test-question-container">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title" id="test-question-title">Lade Frage...</h5>
+                <p class="card-text" id="test-question-text"></p>
+                <div class="test-answers" id="test-answers">
+                    <!-- Dynamically populated -->
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="test-controls mt-4 text-center">
+        <button class="btn btn-outline-secondary me-2" id="skip-test-btn">
+            Überspringen
+        </button>
+        <button class="btn btn-primary" id="next-test-btn" disabled>
+            Nächste Frage
+        </button>
+        <button class="btn btn-success d-none" id="finish-test-btn">
+            Test abschließen
+        </button>
+    </div>
+</div>
+
+<!-- Test Results Modal -->
+<div class="modal fade" id="testResultsModal" tabindex="-1" aria-labelledby="testResultsModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="testResultsModalLabel">
+                    <i class="fas fa-chart-bar me-2"></i>
+                    Deine Ergebnisse
+                </h5>
+            </div>
+            <div class="modal-body text-center">
+                <div class="result-score mb-4">
+                    <div class="score-circle">
+                        <span class="score-value" id="test-score">0/5</span>
+                    </div>
+                </div>
+                <div class="result-recommendation">
+                    <h6>Empfehlung:</h6>
+                    <p id="recommendation-text">Basierend auf deinen Ergebnissen...</p>
+                </div>
+            </div>
+            <div class="modal-footer justify-content-center">
+                <a href="{{ url_for('index') }}" class="btn btn-primary">
+                    <i class="fas fa-rocket me-1"></i>
+                    Lernpfad starten
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    const testQuestions = {{ questions | tojson }};
+</script>
+<script>
+    let currentTestQuestion = 0;
+    let testAnswers = [];
+    let testScore = 0;
+
+    function loadTestQuestion() {
+        if (currentTestQuestion >= testQuestions.questions.length) {
+            showTestResults();
+            return;
+        }
+
+        const question = testQuestions.questions[currentTestQuestion];
+        
+        document.getElementById('test-question-title').textContent = question.title;
+        document.getElementById('test-question-text').textContent = question.question;
+        
+        const answersContainer = document.getElementById('test-answers');
+        answersContainer.innerHTML = '';
+        
+        question.options.forEach((option, index) => {
+            const answerDiv = document.createElement('div');
+            answerDiv.className = 'form-check mb-2';
+            answerDiv.innerHTML = `
+                <input class="form-check-input" type="radio" name="testAnswer" id="answer${index}" value="${option}">
+                <label class="form-check-label" for="answer${index}">
+                    ${option}
+                </label>
+            `;
+            answersContainer.appendChild(answerDiv);
+        });
+        
+        // Update progress
+        const progress = ((currentTestQuestion + 1) / testQuestions.questions.length) * 100;
+        document.getElementById('test-progress').style.width = progress + '%';
+        document.getElementById('current-test-question').textContent = currentTestQuestion + 1;
+        document.getElementById('total-test-questions').textContent = testQuestions.questions.length;
+        
+        // Reset controls
+        document.getElementById('next-test-btn').disabled = true;
+        
+        // Add event listeners to radio buttons
+        document.querySelectorAll('input[name="testAnswer"]').forEach(radio => {
+            radio.addEventListener('change', () => {
+                document.getElementById('next-test-btn').disabled = false;
+            });
+        });
+        
+        // Show finish button on last question
+        if (currentTestQuestion === testQuestions.questions.length - 1) {
+            document.getElementById('next-test-btn').classList.add('d-none');
+            document.getElementById('finish-test-btn').classList.remove('d-none');
+        }
+    }
+
+    function nextTestQuestion() {
+        const selectedAnswer = document.querySelector('input[name="testAnswer"]:checked');
+        if (selectedAnswer) {
+            const question = testQuestions.questions[currentTestQuestion];
+            testAnswers.push(selectedAnswer.value);
+            
+            // Check if answer is correct
+            if (selectedAnswer.value === question.correct_answer) {
+                testScore++;
+            }
+        }
+        
+        currentTestQuestion++;
+        loadTestQuestion();
+    }
+
+    function showTestResults() {
+        const percentage = Math.round((testScore / testQuestions.questions.length) * 100);
+        document.getElementById('test-score').textContent = `${testScore}/${testQuestions.questions.length}`;
+        
+        let recommendation = '';
+        if (percentage >= 80) {
+            recommendation = 'Ausgezeichnet! Du kannst mit fortgeschrittenen Lektionen beginnen.';
+        } else if (percentage >= 60) {
+            recommendation = 'Gut! Du hast solide Grundkenntnisse. Beginne mit den mittleren Lektionen.';
+        } else {
+            recommendation = 'Kein Problem! Wir beginnen mit den Grundlagen und bauen dein Wissen auf.';
+        }
+        
+        document.getElementById('recommendation-text').textContent = recommendation;
+        
+        const modal = new bootstrap.Modal(document.getElementById('testResultsModal'));
+        modal.show();
+    }
+
+    // Event listeners
+    document.getElementById('next-test-btn').addEventListener('click', nextTestQuestion);
+    document.getElementById('finish-test-btn').addEventListener('click', nextTestQuestion);
+    document.getElementById('skip-test-btn').addEventListener('click', () => {
+        window.location.href = "{{ url_for('index') }}";
+    });
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', () => {
+        if (testQuestions && testQuestions.questions && testQuestions.questions.length > 0) {
+            loadTestQuestion();
+        } else {
+            document.getElementById('test-question-title').textContent = 'Keine Testfragen verfügbar';
+            document.getElementById('test-question-text').textContent = 'Bitte kehre zur Hauptseite zurück.';
+        }
+    });
+</script>
+{% endblock %}
